@@ -62,6 +62,14 @@ module Pipeline_tb;
         #10;
                   // Read out R5 and R6, write result to R6
         InstrIn = 32'b000000_00110_00101_00110_00000000000;
+        
+        #10;
+                  // Read out R7 and R8, write result to R8
+        InstrIn = 32'b000000_01000_00111_01000_00000000000;
+
+        #10;
+                  // Read out R10 and R12, write result to R12
+        InstrIn = 32'b000000_01100_01010_01100_00000000000;
 
         // Alter the above and/or add additional tests here,
         // per the instructions in "Lab5 Pre Lab" PDF
