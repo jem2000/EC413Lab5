@@ -45,7 +45,7 @@ module stage_one(S1_RS1,S1_RS2,S1_IMM,S1_DataSource,S1_ALUOP,S1_WS,S1_WE,clk,res
             end 
         else 
             begin 
-                S1_RS1 <= InstrIn[20:15]; 
+                S1_RS1 <= InstrIn[20:16]; 
                 S1_RS2 <= InstrIn[15:11]; 
                 S1_WS <= InstrIn[25:21]; 
                 S1_IMM <= InstrIn[15:0]; 
