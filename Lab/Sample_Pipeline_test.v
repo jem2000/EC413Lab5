@@ -35,12 +35,11 @@ module Pipeline_test;
 //	wire			DataSrc;
 	
 	// Instantiate the Unit Under Test (UUT)
-	Pipeline uut (
+	top uut (
 		.InstrIn(InstrIn), 
-		.Reset(Reset), 
-		.Clk(Clk), 
-		.WriteEnable(WriteEnable), 
-		.ALUOut(ALUOut)
+		.reset(Reset), 
+		.clk(Clk),  
+		.Output(ALUOut) 
 	);
 
 	always #5
@@ -81,7 +80,13 @@ module Pipeline_test;
 		InstrIn= 32'b011101_00101_00101_1111111111111111;		// I, and r5 with 0000FFFF =>   r5 = 00000000
 		
 		#10
-		InstrIn= 32'b011110_00110_00110_1111111111111000;		// I, slt r6 with 0000FFFF8 =>  r6 = 00000001
+		InstrIn= 32'b011110_00110_00110_1111111111111000;		// I, slt r6 with 0000FFFF8 =>  r6 = 00000001 
+		
+		#10 
+		InstrIn = 32'b011010_00001_00001_0000000000001010;       // I type, ADD r1 with 0000000A => r1 = 0000000A 
+		
+		#10 
+        InstrIn = 32'b011100_00010_00010_0000000000000010;      // I type, OR r2 with 00000002 => r2 = 00000002
 
 //		---- R type ---
 		#10
@@ -102,6 +107,12 @@ module Pipeline_test;
 		#10
 		InstrIn= 32'b010010_01100_00001_00110_00000000000;		// R, add r1(0000000A) wtih r6(00000001) =>  r12 = 0000000B  
 		
+		#10 
+		InstrIn= 32'b010010_00011_00001_00010_00000000000;      // R type, ADD r1(0000000A) with r2(00000002) => r3 = 0000000C 
+		
+		#10 
+        InstrIn= 32'b010011_00100_00001_00010_00000000000;      // R type, SUB r1(0000000A) with r2(00000002) => r4 = 00000008
+
 		
 		
 		// Add stimulus here
